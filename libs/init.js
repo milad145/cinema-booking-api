@@ -22,7 +22,7 @@ export const initiateExpress = async (config) => {
 
     routes(app);
 
-    swaggerDocs(app)
+    swaggerDocs(app, config)
 
     const httpServer = http.createServer({}, app);
 

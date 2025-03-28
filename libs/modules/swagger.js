@@ -156,7 +156,7 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-export const swaggerDocs = (app) => {
+export const swaggerDocs = (app,{port}) => {
     // Swagger page
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -165,4 +165,6 @@ export const swaggerDocs = (app) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(swaggerSpec);
     });
+
+    console.log(`📚 API Documents ready at http://localhost:${port}/api-docs`);
 };
