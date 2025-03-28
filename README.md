@@ -72,6 +72,7 @@ We provide a ready-to-use Postman collection in:
 ## Project Structure 📂
     data/
         postman/         # Postman Exported API
+        mongodb/         # Sample Mongodb Data
     libs/
         config/          # Environment configurations
         database/        # Database models and queries
