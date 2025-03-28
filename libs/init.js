@@ -3,6 +3,7 @@ import http from 'http';
 import express from "express";
 
 import routes from "./routes/index.js";
+import {swaggerDocs} from "./modules/swagger.js";
 
 export const initiateExpress = async (config) => {
 
@@ -20,6 +21,8 @@ export const initiateExpress = async (config) => {
     app.use(express.json());
 
     routes(app);
+
+    swaggerDocs(app,config.port)
 
     const httpServer = http.createServer({}, app);
 
