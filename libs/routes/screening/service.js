@@ -1,4 +1,4 @@
-import {screeningModel, movieModel, roomModel} from "../../database/index.js";
+import {screeningModel, movieModel, roomModel, bookingModel} from "../../database/index.js";
 import {errorCode} from "../../modules/errorHandler.js";
 
 export default class ScreeningService {
@@ -97,14 +97,22 @@ export default class ScreeningService {
      * @returns {Promise<object|null>} Screening details
      */
     async getById(id) {
-        return await screeningModel.get(
+        let screening = await screeningModel.get(
             id,
             {},
             [
                 {path: 'movie', select: 'name poster duration description'},
-                {path: 'room', select: 'name seats'}
+                {path: 'room', select: 'name seats'},
             ]
         );
+        let bookedSeats = await bookingModel.find({
+            screening: id,
+            status: {$ne: "cancelled"}
+        }, {seat: 1})
+
+        screening['_doc'].reservedSeats = bookedSeats.map(book => book.seat)
+
+        return screening
     }
 
     /**
