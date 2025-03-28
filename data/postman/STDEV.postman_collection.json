@@ -1,0 +1,669 @@
+{
+	"info": {
+		"_postman_id": "06339ca4-b380-4727-9eeb-ddc9f68780cb",
+		"name": "STDEV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "948470"
+	},
+	"item": [
+		{
+			"name": "01 - User",
+			"item": [
+				{
+					"name": "02 - Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"milad\",\n    \"password\":\"milad145\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZlYTEwMjA0NzdiNTAyYzdlNTY5ZCIsInVzZXJuYW1lIjoic3VwZXJhZG1pbiIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE3NDMxODY5MzgsImV4cCI6MTc0MzIwNDkzOH0.UoVVn8hF8samRgZaKqSzr-2UmH6Q-7KZtghta1FEblc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"milad145\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/register-admin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "01 - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"superadmin\",\n    \"password\":\"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02 - Room",
+			"item": [
+				{
+					"name": "01 - Room Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZlYTEwMjA0NzdiNTAyYzdlNTY5ZCIsInVzZXJuYW1lIjoic3VwZXJhZG1pbiIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE3NDMxODY3NjEsImV4cCI6MTc0MzIwNDc2MX0.yx9mVtfPeQ_0OuvTGkqkD_rPtXophZy9NU-nF8q7PqU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"White Room\",\n    \"rows\": 10,\n    \"seatsPerRow\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/room",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 - Rooms List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/room",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Room Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/room/67e6b8f71d1e4190e2a8865c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"67e6b8f71d1e4190e2a8865c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - Room Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCJ9LCJpYXQiOjE3NDMxNzMzOTIsImV4cCI6MTc0MzE5MTM5Mn0.F-nMndcsH1_zIi7CX_nDigGWATIPCDwQ2Q77pesBm6s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"new name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/room/67e6bb0a5c3fb775331e9784",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"67e6bb0a5c3fb775331e9784"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05 - Room Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCJ9LCJpYXQiOjE3NDMxNzMzOTIsImV4cCI6MTc0MzE5MTM5Mn0.F-nMndcsH1_zIi7CX_nDigGWATIPCDwQ2Q77pesBm6s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/room/67e6bb0a5c3fb775331e9784",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"67e6bb0a5c3fb775331e9784"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03 - Movie",
+			"item": [
+				{
+					"name": "01 - Movie Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiOGM2MWQxZTQxOTBlMmE4ODY1NSJ9LCJpYXQiOjE3NDMxNzM4MzAsImV4cCI6MTc0MzE5MTgzMH0.e06PelRTT5gK4ZD2fPEiii6EI0bToaknbRO_hOYBtPw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Matrix 1\",\n    \"poster\": \"http://localhost:3000/poster/matrix1.jpg\",\n    \"duration\": 190\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/movie",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 - Movies List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/movie",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Movie Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/movie/67e6cb8e14642971b2a8dcfe",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movie",
+								"67e6cb8e14642971b2a8dcfe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - Movie Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCJ9LCJpYXQiOjE3NDMxNzMzOTIsImV4cCI6MTc0MzE5MTM5Mn0.F-nMndcsH1_zIi7CX_nDigGWATIPCDwQ2Q77pesBm6s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"duration\": 150,\n    \"description\": \"A thief who steals corporate secrets through dream-sharing...\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/movie/67e6c962d22c6d512d37b6b4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movie",
+								"67e6c962d22c6d512d37b6b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05 - Movie Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCJ9LCJpYXQiOjE3NDMxNzMzOTIsImV4cCI6MTc0MzE5MTM5Mn0.F-nMndcsH1_zIi7CX_nDigGWATIPCDwQ2Q77pesBm6s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/movie/67e6cb8e14642971b2a8dcfe",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movie",
+								"67e6cb8e14642971b2a8dcfe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04 - Screening",
+			"item": [
+				{
+					"name": "01 - Screening Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiOGM2MWQxZTQxOTBlMmE4ODY1NSJ9LCJpYXQiOjE3NDMxNzM4MzAsImV4cCI6MTc0MzE5MTgzMH0.e06PelRTT5gK4ZD2fPEiii6EI0bToaknbRO_hOYBtPw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movieId\": \"67e6c9a3d22c6d512d37b6ba\",\n    \"roomId\": \"67e6b8f71d1e4190e2a8865c\",\n    \"startTime\": \"2025-03-29T22:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/screening",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 - Screening List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/screening",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Screening List By Movie ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/screening/movie/67e6c962d22c6d512d37b6b4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening",
+								"movie",
+								"67e6c962d22c6d512d37b6b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - Screening List By Room ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/screening/room/67e6b8681d1e4190e2a88651",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening",
+								"room",
+								"67e6b8681d1e4190e2a88651"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05 - Screening Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/screening/67e6d29afc2a71b6f0e816a6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening",
+								"67e6d29afc2a71b6f0e816a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "06 - Screening Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZlYzBmYTAxMjc4MDJhZmI1NTI3MSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4ifSwiaWF0IjoxNzQzMTg4MTEzLCJleHAiOjE3NDMyMDYxMTN9.N-HYv2L6i9rPycCYRrLrJPvBCg32WXIWdNwV1xVwsaU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startTime\":\"2025-03-29T12:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/screening/67e6d29afc2a71b6f0e816a6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening",
+								"67e6d29afc2a71b6f0e816a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "07 - Screening Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZlYzBmYTAxMjc4MDJhZmI1NTI3MSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4ifSwiaWF0IjoxNzQzMTg4MTEzLCJleHAiOjE3NDMyMDYxMTN9.N-HYv2L6i9rPycCYRrLrJPvBCg32WXIWdNwV1xVwsaU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startTime\":\"2025-03-29T12:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/screening/67e6f11ea0127802afb55286",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"screening",
+								"67e6f11ea0127802afb55286"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "05 - Booking",
+			"item": [
+				{
+					"name": "01 - Booking Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCIsInVzZXJuYW1lIjoibWlsYWQiLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE3NDMxOTQ5MTIsImV4cCI6MTc0MzIxMjkxMn0.tXeP-6Dr36QAkT_yFGkWtZSr4XFStklNZ_dXFfML168",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"screeningId\": \"67e6d29afc2a71b6f0e816a6\",\n    \"seat\": \"A3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 - Booking Mine",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCIsInVzZXJuYW1lIjoibWlsYWQiLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE3NDMxOTQ5MTIsImV4cCI6MTc0MzIxMjkxMn0.tXeP-6Dr36QAkT_yFGkWtZSr4XFStklNZ_dXFfML168",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/booking/mine",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"booking",
+								"mine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Booking Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCIsInVzZXJuYW1lIjoibWlsYWQiLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE3NDMxOTQ5MTIsImV4cCI6MTc0MzIxMjkxMn0.tXeP-6Dr36QAkT_yFGkWtZSr4XFStklNZ_dXFfML168",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/booking/67e70bd9162889534efa9fd3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"booking",
+								"67e70bd9162889534efa9fd3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04 - Booking Cancel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY3ZTZiNzA5YjYyMjI5MDJkZGFiYzVlMCIsInVzZXJuYW1lIjoibWlsYWQiLCJyb2xlIjoidXNlciJ9LCJpYXQiOjE3NDMxOTQ5MTIsImV4cCI6MTc0MzIxMjkxMn0.tXeP-6Dr36QAkT_yFGkWtZSr4XFStklNZ_dXFfML168",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/booking/67e70bd9162889534efa9fd3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"booking",
+								"67e70bd9162889534efa9fd3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
