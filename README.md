@@ -33,7 +33,7 @@ Interactive API documentation is available at:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/cinema-booking-api.git
+   git clone https://github.com/milad145/cinema-booking-api.git
    cd cinema-booking-api
    
 2. Install dependencies
