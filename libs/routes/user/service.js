@@ -3,25 +3,33 @@ import {generateJWTToken} from "../../modules/assist.js";
 import {errorCode} from "../../modules/errorHandler.js";
 //========================
 export default class UserService {
-    async register(username, password) {
-        let user = await userModel.getByQuery({username: {'$regex': `^${username}$`, $options: 'i'}}, {})
-        if (user) {
+    async register(username, password, role = 'user') {
+        const existingUser = await userModel.getByQuery({username: {'$regex': `^${username}$`, $options: 'i'}}, {})
+        if (existingUser) {
             throw errorCode(2001)
         }
 
-        let userObj = {
-            username,
-            password
-        }
+        let userObj = {username, password, role}
 
-        user = await userModel.create(userObj);
-        const accessToken = generateJWTToken({_id: user['_id']});
-        return {accessToken}
+        const user = await userModel.create(userObj);
+        return {
+            accessToken: generateJWTToken({
+                _id: user._id,
+                username: user.username,
+                role: user.role
+            }),
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        };
     }
 
     async login(username, password) {
         let user = await userModel.getByQuery({username: {'$regex': `^${username}$`, $options: 'i'}}, {
-            password: true, username: true
+            password: true, username: true, role: true
         }, {})
 
         if (!user) {
@@ -32,8 +40,19 @@ export default class UserService {
         if (!isCorrectPassword)
             throw errorCode(2003)
 
-        const accessToken = generateJWTToken({_id: user['_id']});
-        return {accessToken}
+        return {
+            accessToken: generateJWTToken({
+                _id: user._id,
+                username: user.username,
+                role: user.role
+            }),
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role
+            }
+        };
 
     }
 }

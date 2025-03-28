@@ -21,3 +21,14 @@ export const isLogin = async (req, res, next) => {
         }
     }
 }
+
+export const isAdmin = async (req, res, next) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return setErrorResponse(req, res, errorCode(2004));
+        }
+        next();
+    } catch (e) {
+        setErrorResponse(req, res, errorCode(401));
+    }
+};

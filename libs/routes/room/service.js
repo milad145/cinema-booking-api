@@ -1,38 +1,81 @@
 import {roomModel} from "../../database/index.js";
 import {errorCode} from "../../modules/errorHandler.js";
-//========================
+
 export default class RoomService {
     /**
-     * Create new room
-     * @param name {string}
-     * @param seats {array}
+     * Create new room with auto-generated seats
+     * @param {string} name
+     * @param {number} rows
+     * @param {number} seatsPerRow
      * @returns {Promise<object>}
      */
-    async create(name, seats) {
-        let room = await roomModel.getByQuery({name}, {})
-        if (room) {
-            throw errorCode(2101)
+    async create(name, rows, seatsPerRow) {
+        // Check for existing room with same name
+        const existingRoom = await roomModel.getByQuery({name}, {});
+        if (existingRoom) {
+            throw errorCode(2101);
         }
 
-        let roomObj = {name, seats}
-
-        return await roomModel.create(roomObj);
+        return await roomModel.create({
+            name,
+            rows,
+            seatsPerRow
+        });
     }
 
     /**
-     * Get rooms list
+     * Get all rooms
      * @returns {Promise<array>}
      */
-    async getRooms() {
-        return await roomModel.find({}, {name: 1})
+    async getAll() {
+        return await roomModel.find({}, {
+            name: 1,
+            rows: 1,
+            seatsPerRow: 1,
+            createdAt: 1
+        });
     }
 
     /**
-     * Get room by id
-     * @param _id {objectID}
+     * Get room by ID
+     * @param {string} id
      * @returns {Promise<object>}
      */
-    async getRoom(_id) {
-        return await roomModel.get(_id, {name: 1, seats: 1})
+    async getById(id) {
+        return await roomModel.get(id, {
+            name: 1,
+            rows: 1,
+            seatsPerRow: 1,
+            seats: 1,
+            createdAt: 1
+        });
+    }
+
+    /**
+     * Update room details
+     * @param {string} _id
+     * @param {object} updates
+     * @returns {Promise<object>}
+     */
+    async update(_id, updates) {
+        // Prevent changing seats directly
+        if (updates.seats) {
+            delete updates.seats;
+        }
+
+        return await roomModel.update(
+            {_id},
+            updates,
+            {new: true}
+        );
+    }
+
+    /**
+     * Delete a room
+     * @param {string} _id
+     * @returns {Promise<object>}
+     */
+    async delete(_id) {
+        return await roomModel.delete(_id);
     }
 }

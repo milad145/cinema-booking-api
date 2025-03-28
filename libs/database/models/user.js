@@ -3,8 +3,19 @@ import bcrypt from 'bcryptjs';
 
 const modelName = 'User';
 const schema = new Schema({
-    username: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true
+    },
+    password: {type: String, required: true},
+    role: {
+        type: String,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
 }, {timestamps: true, collection: modelName})
 
 schema.pre("save", async function (next) {

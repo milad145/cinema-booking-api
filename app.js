@@ -4,6 +4,7 @@ import config from './libs/config/index.js'
 
 import {initLogs, APP_LOG} from './libs/modules/logs.js';
 import {initiateExpress} from "./libs/init.js";
+import {createAdmin} from "./libs/scripts/createAdmin.js";
 
 initLogs(APP_LOG);
 
@@ -12,7 +13,7 @@ const connectDB = async () => {
         const conn = await mongoose.connect(config.database);
 
         console.log(`MongoDB Connected: ${conn.connection.host}`);
-
+        await createAdmin(config)
         await initiateExpress(config)
     } catch (err) {
         console.log(err);

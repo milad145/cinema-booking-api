@@ -13,10 +13,15 @@ export const setErrorResponse = (req, res, err) => {
     if (!err.responseCode) {
         console.error("Processing request '%s %s' from '%s' failed:", req.method || "Unknown", req.originalUrl || "request", formatIpAddress(req.ip), err.message || err);
     }
-    res.status(err.responseCode ? err.responseCode : 403).send(err)
+    let errorStatus = 403;
+    if (err.responseCode) {
+        errorStatus = err.responseCode
+        err = new Error(err.message)
+    }
+    res.status(errorStatus).send(err.message)
 }
 
-export const getWeekDay=(n) => {
+export const getWeekDay = (n) => {
     let day = new Array(7);
     day[1] = 'mon';
     day[2] = 'tues';
@@ -34,8 +39,8 @@ export const generateJWTToken = (data) => {
     let expiresIn = config["accessTokenExpireTime"]
     if (secret && expiresIn) {
         return jwt.sign({data}, secret, {expiresIn})
-    } else
-        return ''
+    }
+    return ''
 }
 
 export const validateJWTToken = async (token) => {

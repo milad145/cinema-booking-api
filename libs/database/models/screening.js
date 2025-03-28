@@ -19,14 +19,16 @@ const schema = new Schema({
     endTime: {
         type: Date,
         required: true
-    },
-    seatsAvailable: {
-        type: Number,
-        required: true
     }
 }, {timestamps: true, collection: modelName});
 
-// Prevent double bookings in same room at same time
+// Index for faster queries
+schema.index({ movie: 1 });
+schema.index({ room: 1 });
+schema.index({ startTime: 1 });
+schema.index({ endTime: 1 });
+
+// Prevent overlapping screenings in same room
 schema.index({ room: 1, startTime: 1, endTime: 1 }, { unique: true });
 
 export default mongoose.model(modelName, schema);
