@@ -31,6 +31,7 @@ export const errorCode = (code) => {
     error[2402] = {message: "Invalid seat number", code: 400}
     error[2403] = {message: "Seat already booked", code: 409}
     error[2404] = {message: "Not authorized to cancel this booking", code: 403}
+    error[2405] = {message: "Cannot book seat for past screening", code: 400};
 
 
     let response = error[code] || {};
