@@ -19,6 +19,8 @@ export default class BookingService {
         if (!screening.room.seats.includes(seat)) {
             throw errorCode(2402);
         }
+        if(new Date(screening.startTime) < new Date())
+            throw errorCode(2405)
 
         // Check if seat is already booked
         const existingBooking = await bookingModel.getByQuery({
