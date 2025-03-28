@@ -124,7 +124,7 @@ export default class ScreeningService {
     async update(id, updates) {
         // If changing time, validate no conflicts
         if (updates.startTime) {
-            const screening = await screeningModel.get(id, {movie: 1});
+            const screening = await screeningModel.get(id, {movie: 1, room: 1});
             if (!screening) throw errorCode(2301);
 
             const movie = await movieModel.get(screening.movie);
