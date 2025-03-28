@@ -16,6 +16,9 @@ export const errorCode = (code) => {
     // room > 2100
     error[2101] = {message: "duplicated room name", code: 409}
 
+    // movie > 2200
+    error[2201] = {message: "duplicated movie name", code: 409}
+
 
     let response = error[code] || {};
     let err = new Error();

@@ -4,10 +4,9 @@ import RoomService from './service.js';
 import {createRoomValidation} from "./validation.js";
 import {setErrorResponse} from "../../modules/assist.js";
 import {errorCode} from "../../modules/errorHandler.js";
-import {isLogin} from "../../modules/middlewares.js";
+import {isLogin} from "../../middlewares/index.js";
 
 const roomService = new RoomService;
-
 
 const router = express.Router();
 //============================= POST =============================//

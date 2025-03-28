@@ -1,5 +1,5 @@
-import {errorCode} from "./errorHandler.js";
-import {setErrorResponse, validateJWTToken} from "./assist.js";
+import {errorCode} from "../modules/errorHandler.js";
+import {setErrorResponse, validateJWTToken} from "../modules/assist.js";
 
 export const isLogin = async (req, res, next) => {
     let {authorization} = req.headers;
