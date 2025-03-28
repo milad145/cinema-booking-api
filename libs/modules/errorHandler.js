@@ -25,6 +25,7 @@ export const errorCode = (code) => {
     // screening > 2300
     error[2301] = {message: "Screening not found", code: 404}
     error[2302] = {message: "Room already booked for this time slot", code: 409}
+    error[2303] = {message: "Scheduled Time is passed", code: 400}
 
     // booking > 2400
     error[2401] = {message: "Booking not found", code: 404}

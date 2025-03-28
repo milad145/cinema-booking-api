@@ -17,9 +17,11 @@ export default class ScreeningService {
         if (!room) throw errorCode(2102);
 
         // Calculate end time
+        const now = new Date();
         const startTime = new Date(screeningData.startTime);
         const endTime = new Date(startTime.getTime() + movie.duration * 60000);
-
+        if (startTime < now)
+            throw errorCode(2303)
         // Check for overlapping screenings in the same room
         const overlapping = await screeningModel.find({
             room: screeningData.roomId,
@@ -130,8 +132,11 @@ export default class ScreeningService {
             const movie = await movieModel.get(screening.movie);
             if (!movie) throw errorCode(2202);
 
+            const now = new Date();
             const startTime = new Date(updates.startTime);
             const endTime = new Date(startTime.getTime() + movie.duration * 60000);
+            if (startTime < now)
+                throw errorCode(2303)
 
             const overlapping = await screeningModel.find({
                 room: updates.roomId || screening.room,
