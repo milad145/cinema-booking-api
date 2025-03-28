@@ -25,9 +25,22 @@ A RESTful API for managing movie theaters, screenings, and seat bookings built w
 
 ## API Documentation 📚
 
-Interactive API documentation is available at:
+We provide multiple ways to interact with and test our API:
+
+### 1. Interactive Swagger UI
 
 `http://localhost:3000/api-docs`
+
+### 2. Postman Collection
+We provide a ready-to-use Postman collection in:
+`data/postman/STDEV.postman_collection.json`
+
+**To use it:**
+1. Import the collection into Postman
+2. Set up your environment variables:
+    - `base_url`: `http://localhost:3000`
+    - `Authorization`: `Bearer Your.JWT.token.after.login`
+
 
 ## Installation ⚙️
 
@@ -57,7 +70,8 @@ Interactive API documentation is available at:
    npm run dev
 
 ## Project Structure 📂
-
+    data/
+        postman/         # Postman Exported API
     libs/
         config/          # Environment configurations
         database/        # Database models and queries
