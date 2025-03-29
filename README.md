@@ -31,17 +31,31 @@ We provide multiple ways to interact with and test our API:
 
 `http://localhost:3000/api-docs`
 
-### 2. Postman Collection
-We provide a ready-to-use Postman collection in:
-`data/postman/STDEV.postman_collection.json`
+### 2. Ready-to-Use Resources
+| Resource | Location | Format |
+|----------|----------|--------|
+| Postman Collection | `data/postman/STDEV.postman_collection.json` | JSON |
+| MongoDB Sample Data | `data/mongodb/cinema-booking-api/` | BSON |
 
-**To use it:**
-1. Import the collection into Postman
-2. Set up your environment variables:
-    - `base_url`: `http://localhost:3000`
-    - `Authorization`: `Bearer Your.JWT.token.after.login`
+### 3. Database Import Guide
+**Available Collections:**
+- `Booking.metadata.json` - Sample seat reservations
+- `Movie.metadata.json` - Popular movies with metadata
+- `Room.metadata.json` - Theater room configurations
+- `Screening.metadata.json` - Movie showtimes
+- `User.metadata.json` - Test accounts (including admin)
 
+**Import Command:**
+```bash
+# For default local MongoDB instance:
+mongorestore --db cinema-booking data/mongodb/cinema-booking-api/
 
+# For authenticated production DB:
+mongorestore --uri "mongodb://<user>:<password>@<host>:<port>" \
+             --db cinema-booking \
+             data/mongodb/cinema-booking-api/
+
+```             
 ## Installation ⚙️
 
 1. Clone the repository:
